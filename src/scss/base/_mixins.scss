@@ -1,0 +1,93 @@
+/// Center an element on x or y axis using absolute positioning.
+/// @group positioning
+/// @param {string} $axis ['both'] Axis on which to center element.
+@mixin pos-center($axis: 'both') {
+  position: absolute;
+
+  @if $axis == 'x' {
+    left: 50%;
+    transform: translate3d(-50%, 0, 0);
+  } @else if $axis == 'y' {
+    top: 50%;
+    transform: translate3d(0, -50%, 0);
+  } @else if $axis == 'both' {
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
+  }
+}
+
+/// Set element's display property to flex 
+/// Centers element's children on x or y axis.
+/// @group positioning
+/// @param {string} $axis ['both'] Axis on which to center children.
+@mixin flex-center($axis: 'both') {
+  display: flex;
+
+  @if $axis == 'x' {
+    justify-content: center;
+  } @else if $axis == 'y' {
+    flex-direction: column;
+    align-items: center;
+  } @else if $axis == 'both' {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/// Makes the element an absolutely positioned overlay with the same dimensions as it's parent
+@mixin overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/// Scale element to specific aspect ratio based on it's width.
+/// Use a nested container element to add children to the element.
+/// @param {number} $width Aspect ratio width.
+/// @param {number} $height Aspect ratio height.
+@mixin aspect-ratio($width, $height) {
+  position: relative;
+
+  &:before {
+    content: '';
+    display: block;
+    width: 100%;
+    padding-top: ($height / $width) * 100%;
+  }
+
+  >* {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+}
+
+/// Set multiple backgrounds for different media queries.
+/// Uses include media for the media expressions.
+/// @param {map} $background-set Map with background values for different media expressions.
+/// @prop {string} background-set.background-value Value for the background property when media query resolves to true.
+///
+/// @requires {} media - Include media mixin for the media expressions. <https://include-media.com>
+/// 
+/// @example scss - background-set mixin
+///   @include background-set((
+///     'retina2x': url('https://dummyimage.com/250'),
+///     '<320px': center/cover url('https://dummyimage.com/320'),
+///     ('>=320px', '<640px'): center/cover url('https://dummyimage.com/640'),
+///     '>=640px': center/cover url('https://dummyimage.com/800')
+///   ));
+@mixin background-set($background-set) {
+  // Loop through backgrounds
+  @each $media-expression, $background-value in $background-set {
+    // Include media mixin for item
+    @include media($media-expression...) {
+      background: $background-value;
+    }
+  } 
+}

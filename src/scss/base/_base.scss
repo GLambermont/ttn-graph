@@ -1,0 +1,23 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background: center/cover url('../images/background.svg');
+}
+
+main {
+  @include pos-center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.content-width {
+  max-width: $content-width;
+  padding: 0 $content-padding;
+  margin: 0 auto;
+}

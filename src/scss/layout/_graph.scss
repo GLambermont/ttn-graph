@@ -1,0 +1,63 @@
+.graph {
+  position: relative;
+  margin-left: 120px;
+
+  // Triangle at bottom left corner
+  &::before {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    bottom: -4px;
+    right: calc(100% - 8px);
+    border: 12px solid transparent;
+    border-bottom: 12px solid $c-black;
+    transform: translateY(calc(100% - 4px)) rotate(45deg);
+    transform-origin: top;
+  }
+}
+
+.graph__canvas {
+  background: rgba($c-black, 0.75);
+  width: 864px;
+  height: 480px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(#000, 0.4);
+}
+
+.graph__title {
+  color: $c-text-light;
+}
+
+.graph__console {
+  $line-count: 8;
+
+  position: absolute;
+  top: calc(100% + 16px);
+  right: 0;
+  color: rgba($c-text-light, 0.75);
+  line-height: 2.5ex;
+  height: $line-count * 2.5ex;
+  min-width: 38ch;
+  overflow: hidden;
+}
+
+.graph__console-message {
+  margin: 0;
+}
+
+.graph__label--x,
+.graph__label--y {
+  position: absolute;
+  top: 100%;
+  font-size: ms(2);
+}
+
+.graph__label--x {
+  left: 0px;
+}
+
+.graph__label--y {
+  left: -8px;
+  transform-origin: bottom left;
+  transform: rotate(-90deg) translateX(36px);
+}

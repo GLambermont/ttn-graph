@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="nl" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <meta name="description" content="Description of the page less than 150 characters">
+
+  <link rel="icon" type="image/x-icon" href="https://example.com/favicon.ico">
+  <link rel="icon" type="image/png" href="https://example.com/favicon.png">
+
+  <link rel="apple-touch-icon" href="/custom-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta name="msapplication-config" content="browserconfig.xml">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://example.com/index.html">
+  <meta property="og:title" content="Content Title">
+  <meta property="og:image" content="https://example.com/image.jpg">
+  <meta property="og:description" content="Description Here">
+  <meta property="og:site_name" content="Site Name">
+  <meta property="og:locale" content="nl_NL">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@site_account">
+  <meta name="twitter:creator" content="@individual_account">
+  <meta name="twitter:url" content="https://example.com/index.html">
+  <meta name="twitter:title" content="Content Title">
+  <meta name="twitter:description" content="Content description less than 200 characters">
+  <meta name="twitter:image" content="https://example.com/image.jpg">
+
+  <link rel="canonical" href="http://example.com/index.html">
+
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu:400,500" rel="stylesheet">
+
+  <title>Index</title>
+</head>
+<body>
+  <header class="page-header">
+    <img class="page-header__logo" src="<%= require('./images/logo_sdg.svg') %>" alt="Smart Data Grid">
+  </header>
+  
+  <main>
+    <article class="description">
+      <h2>Datavisualisate</h2>
+      <p>De visualisatie hiernaast maakt gebruik van live data uit het IoT stadslab. Deze data wordt opgehaald vanuit The Things Network en verzonden van de server via een websocket. Bij ieder TTN bericht event wordt vervolgens een nieuw punt in de grafiek getekend. De verschillende bericht die binnen komen vanuit de server zijn rechts onderin te zien.</p>
+    </article>
+
+    <div class="graph">
+      <h2 class="graph__title">Licht intensiteit IoT Stadslab</h2>
+
+      <div class="graph__label--y">Intensiteit</div>
+      <div class="graph__label--x">Tijd</div>
+
+      <div class="graph__console js-graph-console"></div>
+      <canvas class="graph__canvas js-graph-canvas"></canvas> 
+    </div>
+  </main>
+</body>
+</html>
